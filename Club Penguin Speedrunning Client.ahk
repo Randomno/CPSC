@@ -240,32 +240,32 @@ RPath_Absolute(AbsolutPath, RelativePath, s="\") {
 
 ;FINISH IMPORT LOL
 
-Env_SystemAdd("PATH", "C:\xampp\php")
-Env_SystemAdd("PATH", "C:\xampp\mysql\bin")
+Env_SystemAdd("PATH", "D:\xampp\php")
+Env_SystemAdd("PATH", "D:\xampp\mysql\bin")
 
 Env_SystemRemoveDuplicates("PATH")
 
 
 	
-if !FileExist("C:\xampp\mysql\data\kitsune")
+if !FileExist("D:\xampp\mysql\data\kitsune")
 {
-	Run, C:\xampp\htdocs\sql.bat
+	Run, D:\xampp\htdocs\sql.bat
 }
 
-RegRead, firewall_status, HKLM, SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List, [C:\xampp\apache\bin\httpd.exe]
+RegRead, firewall_status, HKLM, SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List, [D:\xampp\apache\bin\httpd.exe]
 If (!InStr(firewall_status, "Enabled"))
-	RegWrite, REG_SZ, HKLM, SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List, [C:\xampp\apache\bin\httpd.exe], [C:\xampp\apache\bin\httpd.exe]:*:Enabled:[Apache]
+	RegWrite, REG_SZ, HKLM, SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List, [D:\xampp\apache\bin\httpd.exe], [D:\xampp\apache\bin\httpd.exe]:*:Enabled:[Apache]
 
-RegRead, firewall_status, HKLM, SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List, [C:\xampp\mysql\bin\mysqld.exe]
+RegRead, firewall_status, HKLM, SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List, [D:\xampp\mysql\bin\mysqld.exe]
 If (!InStr(firewall_status, "Enabled"))
-	RegWrite, REG_SZ, HKLM, SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List, [C:\xampp\mysql\bin\mysqld.exe], [C:\xampp\mysql\bin\mysqld.exe]:*:Enabled:[MySQL]
+	RegWrite, REG_SZ, HKLM, SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List, [D:\xampp\mysql\bin\mysqld.exe], [D:\xampp\mysql\bin\mysqld.exe]:*:Enabled:[MySQL]
 	
-RegRead, firewall_status, HKLM, SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List, [C:\xampp\php\php.exe]
+RegRead, firewall_status, HKLM, SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List, [D:\xampp\php\php.exe]
 If (!InStr(firewall_status, "Enabled"))
-	RegWrite, REG_SZ, HKLM, SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List, [C:\xampp\php\php.exe], [C:\xampp\php\php.exe]:*:Enabled:[PHP]
+	RegWrite, REG_SZ, HKLM, SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List, [D:\xampp\php\php.exe], [D:\xampp\php\php.exe]:*:Enabled:[PHP]
 
-FileDelete, C:\xampp\htdocs\index.php
-FileCopy, C:\xampp\htdocs\php.ini, C:\xampp\php, 1
+FileDelete, D:\xampp\htdocs\index.php
+FileCopy, D:\xampp\htdocs\php.ini, D:\xampp\php, 1
 
 
 
